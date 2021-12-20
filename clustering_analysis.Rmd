@@ -23,6 +23,9 @@ library(ggfortify)
 
 # For hiearchcial clustering
 library(ggdendro)
+
+# To use melt function
+library(reshape2)
 ```
 
 
@@ -482,6 +485,49 @@ print(attributes_dendrogram_plot)
 ```
 
 
+# Create a Heatmap for Attributes
+
+```{r}
+# Create theme
+my_theme <-  theme(axis.text.x=element_text(size=8, angle=35, hjust=1),
+                   axis.text.y=element_text(size=8),
+                   axis.title=element_text(size=9),
+                   legend.text=element_text(size=8),
+                   legend.title=element_text(size=9),
+                   strip.text=element_text(size=9),
+                   plot.title=element_text(size=10),
+                   # Gridlines
+                   panel.grid.major = element_blank(), 
+                   panel.grid.minor = element_blank(),
+                   panel.background = element_rect(), 
+                   axis.line = element_line())
+```
 
 
+```{r}
+# Select the appropriate columns
+attributes_long <- melt(case_scaled, id = c("case_study"))
+
+# Create heatmap
+attributes_heatmap_plot <- ggplot(data = attributes_long, 
+                                  aes(x = case_study, y = variable),
+                                  cluster_rows = color_branches(row_dend, k = 4),
+        cluster_columns = color_branches(col_dend, k = 2)) +
+  geom_tile(aes(fill = value)) +
+  labs(title = "Heatmap of Attributes by Case study", x = "Case Studies", y = "Attributes") +
+  scale_fill_gradient2() +
+  theme(axis.text.y = element_text(size = 6)) +
+  theme_bw() +my_theme
+
+# Preview the heatmap
+print(attributes_heatmap_plot)
+
+```
+
+
+# Perform a PCA Analysis of the data
+
+```{r}
+
+```
 
