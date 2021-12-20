@@ -20,6 +20,9 @@ library(googlesheets4)
 
 # For PCA:
 library(ggfortify)
+
+# For hiearchcial clustering
+library(ggdendro)
 ```
 
 
@@ -156,20 +159,20 @@ friedman_fiji <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/13fgkP1
 
 
 #######################################################################################################################
-hollowed_bering_sea <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1YOYZ9T7RR_8OkqQIWeZobhS-3yaEbKmuAVz16Nrrz9g/edit#gid=1980661832", 
-                           sheet = "UPDATED_S4_ResilienceAttributes",
-                           range = "A6:P61",
-                           col_names = TRUE,
-                           na = "",
-                           guess_max = 10000,
-                           trim_ws = TRUE,
-                           col_types = "c"
-                           ) %>%
-  as_tibble() %>%
-  clean_names() %>% 
-  add_column(case_study = "Hollowed",
-             reference = "hollowed1",
-             .after = "question_id")
+#hollowed_bering_sea <- read_sheet(ss = #"https://docs.google.com/spreadsheets/d/1YOYZ9T7RR_8OkqQIWeZobhS-3yaEbKmuAVz16Nrrz9g/edit#gid=1980661832", 
+#                           sheet = "UPDATED_S4_ResilienceAttributes",
+#                           range = "A6:P61",
+#                           col_names = TRUE,
+#                           na = "",
+#                           guess_max = 10000,
+#                           trim_ws = TRUE,
+#                           col_types = "c"
+#                           ) %>%
+#  as_tibble() %>%
+#  clean_names() %>% 
+#  add_column(case_study = "Hollowed",
+#             reference = "hollowed1",
+#             .after = "question_id")
 
 
 
@@ -357,7 +360,7 @@ zhao_moorea <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1-Muz76--
 # Merge the datasets
 
 ```{r}
-attributes_merged <- rbind(aguion_barnacle, dickey_collas_eur, eurich_clam, free_crab, friedman_fiji, hollowed_bering_sea, kleisner_jfi, lau_png, mason_iceland, mills_lobster, pecl_lobster, tokunaga_lobster, westfall_hms, zhao_moorea)
+attributes_merged <- rbind(aguion_barnacle, dickey_collas_eur, eurich_clam, free_crab, friedman_fiji, kleisner_jfi, lau_png, mason_iceland, mills_lobster, pecl_lobster, tokunaga_lobster, westfall_hms, zhao_moorea)
 
 
 # Data frames that don't bind:
@@ -418,6 +421,35 @@ attributes_merged_clean <- attributes_merged %>%
   filter(!is.na(numeric_importance))
   
 ```
+
+
+# Prepare data for performing clustering analysis
+
+```{r}
+attributes_clustering <- attributes_merged_clean %>% 
+  select(case_study,  attribute, official_score) %>% 
+  # Use `pivot_wider` function to decrease the number of rows and increase the number of columns
+  # Also do values_fill = 0 to convert NA values to 0
+  pivot_wider(names_from = attribute, values_from = official_score, values_fill = 0)
+
+# Prepare data for dendrogram
+# Scale the data
+attributes_scaled <- attributes_clustering
+attributes_scaled[, c(2:39)] <- scale(attributes_scaled[, 2:39])
+
+# Run clustering
+attributes_matrix <- as.matrix(attributes_scaled[, -c(1)])
+rownames(attributes_matrix) <- attributes_scaled$case_study
+attributes_dendro <- as.dendrogram(hclust(d = dist(x = attributes_matrix)))
+
+
+# PLot the dendrogram
+dendrogram_plot <- ggdendrogram(data = attributes_dendro, rotate = TRUE)
+
+print(dendrogram_plot)
+```
+
+
 
 
 
