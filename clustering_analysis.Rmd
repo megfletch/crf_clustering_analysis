@@ -423,10 +423,11 @@ attributes_merged_clean <- attributes_merged %>%
 ```
 
 
-# Prepare data for performing clustering analysis
+# Plot Dendrogram for Case Studies
 
 ```{r}
-attributes_clustering <- attributes_merged_clean %>% 
+# Prepare data for performing clustering analysis
+case_clustering <- attributes_merged_clean %>% 
   select(case_study,  attribute, official_score) %>% 
   # Use `pivot_wider` function to decrease the number of rows and increase the number of columns
   # Also do values_fill = 0 to convert NA values to 0
@@ -434,26 +435,51 @@ attributes_clustering <- attributes_merged_clean %>%
 
 # Prepare data for dendrogram
 # Scale the data
-attributes_scaled <- attributes_clustering
-attributes_scaled[, c(2:39)] <- scale(attributes_scaled[, 2:39])
+case_scaled <- case_clustering
+case_scaled[, c(2:39)] <- scale(case_scaled[, 2:39])
 
 # Run clustering
-attributes_matrix <- as.matrix(attributes_scaled[, -c(1)])
-rownames(attributes_matrix) <- attributes_scaled$case_study
-attributes_dendro <- as.dendrogram(hclust(d = dist(x = attributes_matrix)))
+case_matrix <- as.matrix(case_scaled[, -c(1)])
+rownames(case_matrix) <- case_scaled$case_study
+case_dendro <- as.dendrogram(hclust(d = dist(x = case_matrix)))
+```
 
+```{r}
+# Plot the dendrogram
+case_dendrogram_plot <- ggdendrogram(data = case_dendro, rotate = TRUE)
 
-# PLot the dendrogram
-dendrogram_plot <- ggdendrogram(data = attributes_dendro, rotate = TRUE)
-
-print(dendrogram_plot)
+print(case_dendrogram_plot)
 ```
 
 
+# Plot Gendrogram for Attributes
 
+```{r}
+# Prepare data for performing clustering analysis
+attributes_clustering <- attributes_merged_clean %>% 
+  select(case_study,  attribute, official_score) %>% 
+  # Use `pivot_wider` function to decrease the number of rows and increase the number of columns
+  # Also do values_fill = 0 to convert NA values to 0
+  pivot_wider(names_from = case_study, values_from = official_score, values_fill = 0)
 
+# Prepare data for dendrogram
+# Scale the data
+attributes_scaled <- attributes_clustering
+attributes_scaled[, c(2:13)] <- scale(attributes_scaled[, 2:13])
 
+# Run clustering
+attributes_matrix <- as.matrix(attributes_scaled[, -c(1)])
+rownames(attributes_matrix) <- attributes_scaled$attribute
+attributes_dendro <- as.dendrogram(hclust(d = dist(x = attributes_matrix)))
 
+```
+
+```{r}
+# Plot the dendrogram
+attributes_dendrogram_plot <- ggdendrogram(data = attributes_dendro, rotate = TRUE)
+
+print(attributes_dendrogram_plot)
+```
 
 
 
