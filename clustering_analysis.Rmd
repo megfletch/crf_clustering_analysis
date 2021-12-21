@@ -2,7 +2,7 @@
 title: "CRF Clustering Analysis"
 author: "Meghan Fletcher"
 date: "12/16/2021"
-output: \
+output: 
   html_document:
     theme: flatly
     code_folding: hide
@@ -670,7 +670,11 @@ autoplot(goverance_pca,
   labs(colour = "Attributes", title = "Ecologcial Dimension PCA Analysis")
 ```
 
+# PCA with Attributes as the lines and cases as the points
 
+```{r}
+
+```
 
 
 
