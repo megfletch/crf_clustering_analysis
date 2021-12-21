@@ -510,9 +510,7 @@ attributes_long <- melt(case_scaled, id = c("case_study"))
 
 # Create heatmap
 attributes_heatmap_plot <- ggplot(data = attributes_long, 
-                                  aes(x = case_study, y = variable),
-                                  cluster_rows = color_branches(row_dend, k = 4),
-        cluster_columns = color_branches(col_dend, k = 2)) +
+                                  aes(x = case_study, y = variable)) +
   geom_tile(aes(fill = value)) +
   labs(title = "Heatmap of Attributes by Case study", x = "Case Studies", y = "Attributes") +
   scale_fill_gradient2() +
@@ -528,6 +526,30 @@ print(attributes_heatmap_plot)
 # Perform a PCA Analysis of the data
 
 ```{r}
+# Read in plastics data and prep for PCA - include only energy and variables endings in "_g"
+attributes_pca <- case_clustering %>%
+  select(c(2:13)) %>% 
+  scale() %>% 
+  prcomp()
 
+attributes_pca$restoration
+
+
+# Create PCA plot
+autoplot(attributes_pca,
+         data = case_clustering,
+         colour = "case_study",
+         loadings = TRUE,
+         loadings.label = TRUE,
+         loadings.colour = "black",
+         loadings.label.colour = "black",
+         alpha = .5,
+         loadings.label.vjust = 1.2,
+         loadings.label.hjust = 0.8) +
+  theme_bw() +
+  theme(legend.background = element_rect(fill="lightblue",
+                                  size=0.5, linetype="solid", 
+                                  colour ="black")) +
+  labs(colour = "Case Studies", title = "PCA Analysis of Case Study Attributes")
 ```
 
