@@ -23,6 +23,10 @@ library(ggdendro)
 
 # To use melt function
 library(reshape2)
+
+# For graph coloring
+library(viridis)
+library(plotly)
 ```
 
 
@@ -428,7 +432,7 @@ attributes_merged_clean <- attributes_merged %>%
 ```{r}
 # Prepare data for performing clustering analysis
 case_clustering <- attributes_merged_clean %>% 
-  select(case_study,  attribute, official_score) %>% 
+  select(case_study, dimension, attribute, official_score) %>% 
   # Use `pivot_wider` function to decrease the number of rows and increase the number of columns
   # Also do values_fill = 0 to convert NA values to 0
   pivot_wider(names_from = attribute, values_from = official_score, values_fill = 0)
@@ -436,7 +440,7 @@ case_clustering <- attributes_merged_clean %>%
 # Prepare data for dendrogram
 # Scale the data
 case_scaled <- case_clustering
-case_scaled[, c(2:39)] <- scale(case_scaled[, 2:39])
+case_scaled[, c(3:40)] <- scale(case_scaled[, 3:40])
 
 # Run clustering
 case_matrix <- as.matrix(case_scaled[, -c(1)])
@@ -601,20 +605,23 @@ my_theme <-  theme(axis.text.x=element_text(size=8, angle=35, hjust=1),
 
 ```{r}
 # Select the appropriate columns
-attributes_long <- melt(case_scaled, id = c("case_study"))
+attributes_long <- melt(case_clustering, id = c("case_study", "dimension"))
 
 # Create heatmap
 attributes_heatmap_plot <- ggplot(data = attributes_long, 
-                                  aes(x = case_study, y = variable)) +
+                                  aes(x = case_study, y = variable, text=value)) +
   geom_tile(aes(fill = value)) +
   labs(title = "Heatmap of Attributes by Case study", x = "Case Studies", y = "Attributes") +
-  scale_fill_gradient2() +
+  scale_fill_viridis(discrete = FALSE) +
   theme(axis.text.y = element_text(size = 6)) +
-  theme_bw() +my_theme
+  theme_bw() + my_theme +
+  facet_grid(~dimension)
 
 # Preview the heatmap
 print(attributes_heatmap_plot)
 
+# Make the graph
+ggplotly(attributes_heatmap_plot, tooltip="text")
 ```
 
 
