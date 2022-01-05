@@ -613,7 +613,7 @@ attributes_long <- melt(case_clustering, id = c("case_study"))
 attributes_heatmap_plot <- ggplot(data = attributes_long, 
                                   aes(x = case_study, y = variable, text=value)) +
   geom_tile(aes(fill = value)) +
-  labs(title = "Heatmap of Attributes by Case study", x = "Case Studies", y = "Attributes") +
+  labs(title = "Heatmap of Attribute Scores by Case study", x = "Case Studies", y = "Attributes") +
   scale_fill_viridis(discrete = FALSE) +
   theme(axis.text.y = element_text(size = 6)) +
   theme_bw() + my_theme +
@@ -626,7 +626,7 @@ attributes_heatmap_plot <- ggplot(data = attributes_long,
 
 attributes_heatmap_plot
 
-# Make the graph
+# Make the graph interactive
 #ggplotly(attributes_heatmap_plot, tooltip="text")
 ```
 
@@ -667,7 +667,15 @@ importance_heatmap_plot
 #(importance_heatmap_plot, tooltip="text")
 ```
 ```{r}
-attributes_heatmap_plot | importance_heatmap_plot
+# Eliminate legends to make patchwork cleaner
+p1 <- attributes_heatmap_plot +
+  theme(legend.position = "none")
+  
+p2 <- importance_heatmap_plot+
+  theme(legend.position = "none")
+
+# Use patchwork to plot the heatmaps next to each other
+p1 | p2
 ```
 
 
