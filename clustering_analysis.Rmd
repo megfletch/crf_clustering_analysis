@@ -427,6 +427,7 @@ attributes_merged_clean <- attributes_merged %>%
   
 ```
 
+
 ##################################################################################
 
 # Hierarchical Clustering Analyses
@@ -629,7 +630,7 @@ attributes_heatmap_plot <- ggplot(data = attributes_long,
              linetype = "solid") +
   geom_hline(yintercept = "Agency",
              color = "black",
-             linetype = "solid")
+             linetype = "solid") 
 
 attributes_heatmap_plot
 
