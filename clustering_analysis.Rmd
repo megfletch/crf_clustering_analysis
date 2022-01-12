@@ -56,20 +56,20 @@ aguion_barnacle <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1WfGs
 
 
 #######################################################################################################################
-#burden_sardine <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1umFwY33PSTJYmlfSIZiIWmT2gIBQeYCw/edit?usp=drive_web&ouid=1082#97509896161547373&rtpof=true", 
-#                           sheet = "UPDATED_S4_ResilienceAttributes",
-#                           range = "A6:P61",
-#                           col_names = TRUE,
-#                           na = "",
-#                           guess_max = 10000,
-#                           trim_ws = TRUE,
-#                           col_types = "c"
-#                           ) %>%
-#  as_tibble() %>%
-#  clean_names()%>% 
-#  add_column(case_study = "Burden",
-#             reference = "burden1",
-#             .after = "question_id")
+burden_sardine <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1TkB-P94xgRssmcbAuzwoh0BlDdvUfYHO7vWjK6r2pxs/edit#gid=1274102518", 
+                           sheet = "UPDATED_S4_ResilienceAttributes",
+                           range = "A6:P61",
+                           col_names = TRUE,
+                           na = "",
+                           guess_max = 10000,
+                           trim_ws = TRUE,
+                           col_types = "c"
+                           ) %>%
+  as_tibble() %>%
+  clean_names()%>% 
+  add_column(case_study = "Burden",
+             reference = "burden1",
+             .after = "question_id")
 
 
 
@@ -366,7 +366,7 @@ zhao_moorea <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1-Muz76--
 # Merge the datasets
 
 ```{r}
-attributes_merged <- rbind(aguion_barnacle, dickey_collas_eur, eurich_clam, free_crab, friedman_fiji, kleisner_jfi, lau_png, mason_iceland, mills_lobster, pecl_lobster, tokunaga_lobster, westfall_hms, zhao_moorea)
+attributes_merged <- rbind(aguion_barnacle, burden_sardine, dickey_collas_eur, eurich_clam, free_crab, friedman_fiji, kleisner_jfi, lau_png, mason_iceland, mills_lobster, pecl_lobster, tokunaga_lobster, westfall_hms, zhao_moorea)
 
 
 # Data frames that don't bind:
@@ -423,7 +423,14 @@ attributes_merged_clean <- attributes_merged %>%
     importance == "Medium" ~ "2",
     importance == "High" ~ "3")) %>% 
   mutate(numeric_importance=as.numeric(numeric_importance)) %>% 
-  filter(!is.na(numeric_importance))
+  filter(!is.na(numeric_importance)) %>% 
+  # Create a new column to house numeric values for information quality
+  mutate(numeric_info = case_when(
+    quality == "Excellent" ~ 4,
+    quality == "Good" ~ 3,
+    quality == "Fair" ~ 2,
+    quality == "Low" ~ 1,
+    quality == "No data" ~ 0)) 
   
 ```
 
@@ -689,6 +696,45 @@ p2 <- importance_heatmap_plot+
 # Use patchwork to plot the heatmaps next to each other
 p1 | p2
 ```
+
+######################################################################################
+
+# Heatmap of Information Quality
+
+```{r}
+# Data wrangling to organize importance clustering
+info_clustering <- attributes_merged_clean %>% 
+  select(case_study, attribute, numeric_info) %>% 
+  # Use `pivot_wider` function to decrease the number of rows and increase the number of columns
+  # Also do values_fill = 0 to convert NA values to 0
+  pivot_wider(names_from = attribute, values_from = numeric_info, values_fill = 0)
+```
+
+
+```{r}
+# Heatmap of Importance Scores Across all Attributes
+# Select the appropriate columns
+info_long <- melt(info_clustering, id = c("case_study"))
+
+# Create heatmap
+info_heatmap_plot <- ggplot(data = info_long, 
+                                  aes(x = case_study, y = variable, text=value)) +
+  geom_tile(aes(fill = value)) +
+  labs(title = "Heatmap of Information Quality by Attribute Across All Case Studies", x = "Case Studies", y = "Attributes") +
+  scale_fill_distiller(palette = "RdYlBu") +
+  theme(axis.text.y = element_text(size = 6)) +
+  theme_bw() + my_theme +
+  geom_hline(yintercept = "Population modularity",
+             color = "black",
+             linetype = "solid") +
+  geom_hline(yintercept = "Agency",
+             color = "black",
+             linetype = "solid")
+
+info_heatmap_plot
+
+```
+
 
 ######################################################################################
 
