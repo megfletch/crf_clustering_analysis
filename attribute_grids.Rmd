@@ -80,7 +80,13 @@ aguion_barnacle <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1WfGs
   mutate(numeric_importance = case_when(
     importance == "Low" ~ 1,
     importance == "Medium" ~ 2,
-    importance == "High" ~ 3))
+    importance == "High" ~ 3)) %>% 
+  # Create a new column to convert numeric scores into values
+  mutate(score_value = case_when(
+    score == 1 ~ "Low",
+    score == 2 ~ "Medium",
+    score == 3 ~ "Medium",
+    score == 4 ~ "High"))
 
 
 #######################################################################################################################
@@ -125,7 +131,13 @@ burden_sardine <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1TkB-P
   mutate(numeric_importance = case_when(
     importance == "Low" ~ 1,
     importance == "Medium" ~ 2,
-    importance == "High" ~ 3))
+    importance == "High" ~ 3)) %>% 
+  # Create a new column to convert numeric scores into values
+  mutate(score_value = case_when(
+    score == 1 ~ "Low",
+    score == 2 ~ "Medium",
+    score == 3 ~ "Medium",
+    score == 4 ~ "High"))
 
 
 #######################################################################################################################
@@ -851,6 +863,17 @@ zhao_moorea <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1-Muz76--
   
 ```
 
+# Create a matrix for each case study
+
+## Aguion Matrix
+
+```{r}
+aguion_matrix <- aguion_barnacle %>% 
+  select("attribute", "importance", "score_value") %>% 
+  pivot_wider(names_from = score_value, values_from = attribute, values_fill = TRUE)
+
+https://tidyr.tidyverse.org/articles/pivot.html
+```
 
 
 
