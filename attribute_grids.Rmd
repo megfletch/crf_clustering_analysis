@@ -870,9 +870,9 @@ zhao_moorea <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1-Muz76--
 ```{r}
 aguion_matrix <- aguion_barnacle %>% 
   select("attribute", "importance", "score_value") %>% 
-  pivot_wider(names_from = score_value, values_from = attribute, values_fill = TRUE)
+  pivot_wider(names_from = score_value, values_from = attribute) 
 
-https://tidyr.tidyverse.org/articles/pivot.html
+#https://tidyr.tidyverse.org/articles/pivot.html
 ```
 
 
