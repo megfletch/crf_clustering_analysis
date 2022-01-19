@@ -17,6 +17,7 @@ library(tidyverse)
 library(janitor)
 library(here)
 library(googlesheets4)
+library(kableExtra)
 ```
 
 ```{r}
@@ -868,6 +869,22 @@ zhao_moorea <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1-Muz76--
 ## Aguion Matrix
 
 ```{r}
+aguion_table <- aguion_barnacle %>% 
+  select("importance", "score_value", "attribute") %>% 
+  group_by(score_value, importance) %>% 
+  summarize(attribute = str_c(attribute)) %>% 
+  pivot_wider(names_from = c(importance), values_from = attribute) %>% 
+  rename(" " = score_value) 
+
+# Create table
+aguion_table %>% 
+  kbl(caption = "Aguion Attribtue Table") %>% 
+   kable_classic_2(full_width = F, html_font = "Cambria") %>% 
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+
+```{r}
 aguion_matrix <- aguion_barnacle %>% 
   select("attribute", "importance", "score_value") %>% 
   pivot_wider(names_from = score_value, values_from = attribute) 
@@ -877,7 +894,8 @@ ggplot(aguion_barnacle, aes(x = importance, y = score_value)) +
   labs(title = "Aguion Attribute Matrix", x = "Importance", y = "Score") +
   geom_text(aes(label = attribute), 
             color="navy",
-            position = position_jitter()) +
+            size = 3,
+            position = position_jitter(width=0, height=0.35)) +
   scale_y_discrete(limits = c("Low","Medium","High")) +
   theme_bw()
 
