@@ -20,12 +20,6 @@ library(googlesheets4)
 library(kableExtra)
 ```
 
-```{r}
-https://cran.r-project.org/web/packages/ztable/vignettes/heatmapTable.html
-https://www.datamentor.io/r-programming/matrix/
-
-# Need to make score ino works and combine 2 & 3 as medium
-```
 
 # Read in the data
 
@@ -866,15 +860,16 @@ zhao_moorea <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1-Muz76--
 
 # Create a matrix for each case study
 
-## Aguion Matrix
+## Aguion Attribute Table
 
 ```{r}
 aguion_table <- aguion_barnacle %>% 
   select("importance", "score_value", "attribute") %>% 
   group_by(score_value, importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(importance), values_from = attribute) %>% 
+  pivot_wider(names_from = c(importance), values_from = attribute, values_fn = list) %>% 
   rename(" " = score_value) 
+  
 
 # Create table
 aguion_table %>% 
@@ -885,23 +880,100 @@ aguion_table %>%
 
 
 ```{r}
-aguion_matrix <- aguion_barnacle %>% 
-  select("attribute", "importance", "score_value") %>% 
-  pivot_wider(names_from = score_value, values_from = attribute) 
+# Attempts to do this using ggplot
 
-ggplot(aguion_barnacle, aes(x = importance, y = score_value)) +
-  geom_tile(fill = "lightblue") +
-  labs(title = "Aguion Attribute Matrix", x = "Importance", y = "Score") +
-  geom_text(aes(label = attribute), 
-            color="navy",
-            size = 3,
-            position = position_jitter(width=0, height=0.35)) +
-  scale_y_discrete(limits = c("Low","Medium","High")) +
-  theme_bw()
+#aguion_matrix <- aguion_barnacle %>% 
+#  select("attribute", "importance", "score_value") %>% 
+#  pivot_wider(names_from = score_value, values_from = attribute) 
+
+#ggplot(aguion_barnacle, aes(x = importance, y = score_value)) +
+#  geom_tile(fill = "lightblue") +
+#  labs(title = "Aguion Attribute Matrix", x = "Importance", y = "Score") +
+#  geom_text(aes(label = attribute), 
+#            color="navy",
+#            size = 3,
+#            position = position_jitter(width=0, height=0.35)) +
+#  scale_y_discrete(limits = c("Low","Medium","High")) +
+#  theme_bw()
 
   
 #https://tidyr.tidyverse.org/articles/pivot.html
 ```
+
+
+## Burden Attribute Table
+
+```{r}
+burden_table <- burden_sardine %>% 
+  select("importance", "score_value", "attribute") %>% 
+  group_by(score_value, importance) %>% 
+  summarize(attribute = str_c(attribute)) %>% 
+  pivot_wider(names_from = c(importance), values_from = attribute, values_fn = list) %>% 
+  rename(" " = score_value) 
+  
+
+# Create table
+aguion_table %>% 
+  kbl(caption = "Burden Attribtue Table") %>% 
+   kable_classic_2(full_width = F, html_font = "Cambria") %>% 
+  kable_styling(bootstrap_options = c("striped", "hover"))
+```
+
+
+## Dickey-Collas Attribute Table
+
+
+
+## Eurich Attribute Table
+
+
+
+## Free Attribute Table
+
+
+
+## Friedman Attribute Table
+
+
+
+## Hollowed Attribute Table
+
+
+
+## Kisara Attribute Table
+
+
+
+## Kleisner Attribute Table
+
+
+
+## Lau Attribute Table
+
+
+
+## Mason Attribute Table
+
+
+
+## Mills Attribute Table
+
+
+
+## Pecl Attribute Table
+
+
+
+## Tokunaga Attribute Table
+
+
+
+## Westfall Attribute Table
+
+
+
+## Zhao Attribute Table
+
 
 
 
