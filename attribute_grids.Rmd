@@ -1067,7 +1067,7 @@ aguion_table %>%
   kbl(caption = "Aguion Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3))
+  add_header_above(c(" ", "Score Levels" = 3)) # %>% save_kable("aguion_attribute_table.png")
 ```
 
 
@@ -1088,8 +1088,7 @@ burden_table <- burden_sardine %>%
 burden_table %>% 
   kbl(caption = "Burden Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
-  kable_styling(bootstrap_options = c("striped", "hover"))
-
+  kable_styling(bootstrap_options = c("striped", "hover")) #%>% save_kable("burden_attribute_table.png")
 ```
 
 
@@ -1109,7 +1108,7 @@ dickey_collas_table %>%
   kbl(caption = "Dickey-Collas Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 4))
+  add_header_above(c(" ", "Score Levels" = 4)) #%>% save_kable("dickey_collas_attribute_table.png")
 ```
 
 
@@ -1129,7 +1128,7 @@ eurich_table %>%
   kbl(caption = "Eurich Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3))
+  add_header_above(c(" ", "Score Levels" = 3)) #%>% save_kable("eurich_attribute_table.png")
 ```
 
 
@@ -1149,7 +1148,7 @@ free_table %>%
   kbl(caption = "Free Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3))
+  add_header_above(c(" ", "Score Levels" = 3)) #%>% save_kable("free_attribute_table.png")
 ```
 
 
@@ -1169,7 +1168,7 @@ friedman_table %>%
   kbl(caption = "Friedman Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 4))
+  add_header_above(c(" ", "Score Levels" = 4)) #%>% save_kable("friedman_attribute_table.png")
 ```
 
 
@@ -1189,7 +1188,7 @@ hollowed_table %>%
   kbl(caption = "Hollowed Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3))
+  add_header_above(c(" ", "Score Levels" = 3)) #%>% save_kable("hollowed_attribute_table.png")
 ```
 
 
@@ -1209,7 +1208,7 @@ kisara_table %>%
   kbl(caption = "Kisara Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 4))
+  add_header_above(c(" ", "Score Levels" = 4)) #%>% save_kable("kisara_attribute_table.png")
 ```
 
 
@@ -1229,7 +1228,7 @@ kleisner_table %>%
   kbl(caption = "Kleisner Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3))
+  add_header_above(c(" ", "Score Levels" = 3)) #%>% save_kable("kleisner_attribute_table.png")
 ```
 
 
@@ -1249,7 +1248,7 @@ lau_table %>%
   kbl(caption = "Lau Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 4))
+  add_header_above(c(" ", "Score Levels" = 4)) #%>% save_kable("lau_attribute_table.png")
 ```
 
 
@@ -1269,7 +1268,7 @@ mason_table %>%
   kbl(caption = "Mason Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3))
+  add_header_above(c(" ", "Score Levels" = 3)) #%>% save_kable("mason_attribute_table.png")
 ```
 
 
@@ -1288,7 +1287,7 @@ mills_table %>%
   kbl(caption = "Mills Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 4))
+  add_header_above(c(" ", "Score Levels" = 4)) #%>% save_kable("mills_attribute_table.png")
 ```
 
 
@@ -1308,7 +1307,7 @@ pecl_table %>%
   kbl(caption = "Pecl Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3))
+  add_header_above(c(" ", "Score Levels" = 3)) #%>% save_kable("pecl_attribute_table.png")
 ```
 
 
@@ -1328,7 +1327,7 @@ tokunaga_table %>%
   kbl(caption = "Tokunaga Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3))
+  add_header_above(c(" ", "Score Levels" = 3)) #%>% save_kable("tokunaga_attribute_table.png")
 ```
 
 
@@ -1348,7 +1347,7 @@ westfall_table %>%
   kbl(caption = "Westfall Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 4))
+  add_header_above(c(" ", "Score Levels" = 4)) #%>% save_kable("westfall_attribute_table.png")
 ```
 
 
@@ -1368,7 +1367,7 @@ zhao_table %>%
   kbl(caption = "Zhao Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3))
+  add_header_above(c(" ", "Score Levels" = 3)) #%>% save_kable("zhao_attribute_table.png")
 ```
 
 
