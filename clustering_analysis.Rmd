@@ -366,11 +366,7 @@ zhao_moorea <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1-Muz76--
 # Merge the datasets
 
 ```{r}
-attributes_merged <- rbind(aguion_barnacle, burden_sardine, dickey_collas_eur, eurich_clam, free_crab, friedman_fiji, kleisner_jfi, lau_png, mason_iceland, mills_lobster, pecl_lobster, tokunaga_lobster, westfall_hms, zhao_moorea)
-
-
-# Data frames that don't bind:
-#  kisara_squid
+attributes_merged <- rbind(aguion_barnacle, burden_sardine, dickey_collas_eur, eurich_clam, free_crab, friedman_fiji, kisara_squid, kleisner_jfi, lau_png, mason_iceland, mills_lobster, pecl_lobster, tokunaga_lobster, westfall_hms, zhao_moorea)
 
 ```
 

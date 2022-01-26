@@ -42,20 +42,20 @@ aguion_barnacle <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1WfGs
 
 
 #######################################################################################################################
-#burden_sardine <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1umFwY33PSTJYmlfSIZiIWmT2gIBQeYCw/edit?usp=drive_web&ouid=1082#97509896161547373&rtpof=true", 
-#                           sheet = "UPDATED_S4_ResilienceAttributes",
-#                           range = "A6:P61",
-#                           col_names = TRUE,
-#                           na = "",
-#                           guess_max = 10000,
-#                           trim_ws = TRUE,
-#                           col_types = "c"
-#                           ) %>%
-#  as_tibble() %>%
-#  clean_names()%>% 
-#  add_column(case_study = "Burden",
-#             reference = "burden1",
-#             .after = "question_id")
+burden_sardine <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1TkB-P94xgRssmcbAuzwoh0BlDdvUfYHO7vWjK6r2pxs/edit#gid=1965519914", 
+                           sheet = "UPDATED_S4_ResilienceAttributes",
+                           range = "A6:P61",
+                           col_names = TRUE,
+                           na = "",
+                           guess_max = 10000,
+                           trim_ws = TRUE,
+                           col_types = "c"
+                           ) %>%
+  as_tibble() %>%
+  clean_names() %>% 
+  add_column(case_study = "Burden",
+             reference = "burden1",
+             .after = "question_id")
 
 
 
@@ -353,11 +353,8 @@ zhao_moorea <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1-Muz76--
 # Merge the datasets
 
 ```{r}
-attributes_merged <- rbind(aguion_barnacle, dickey_collas_eur, eurich_clam, free_crab, friedman_fiji, kleisner_jfi, lau_png, mason_iceland, mills_lobster, pecl_lobster, tokunaga_lobster, westfall_hms, zhao_moorea)
+attributes_merged <- rbind(aguion_barnacle, burden_sardine, dickey_collas_eur, eurich_clam, free_crab, friedman_fiji, kisara_squid, kleisner_jfi, lau_png, mason_iceland, mills_lobster, pecl_lobster, tokunaga_lobster, westfall_hms, zhao_moorea)
 
-
-# Data frames that don't bind:
-#  kisara_squid
 
 ```
 
@@ -754,7 +751,7 @@ autoplot(goverance_pca2,
          loadings.label = TRUE,
          loadings.colour = "black",
          loadings.label.colour = "purple",
-         loadings.label.hjust = 1) +
+         loadings.label.hjust = -1) +
   theme_bw() +
   theme(legend.background = element_rect(fill="lightblue",
                                   size=0.5, linetype="solid", 
