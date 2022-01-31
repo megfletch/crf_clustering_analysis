@@ -86,7 +86,8 @@ aguion_barnacle <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1WfGs
     score == 1 ~ "1_Low",
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
-    score == 4 ~ "3_High"))
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
 
 
 #######################################################################################################################
@@ -142,7 +143,8 @@ burden_sardine <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1TkB-P
     score == 1 ~ "1_Low",
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
-    score == 4 ~ "3_High"))
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
 
 
 #######################################################################################################################
@@ -198,7 +200,8 @@ dickey_collas_eur <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1hf
     score == 1 ~ "1_Low",
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
-    score == 4 ~ "3_High"))
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
 
 
 #######################################################################################################################
@@ -254,7 +257,8 @@ eurich_clam <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1ZEIev1lc
     score == 1 ~ "1_Low",
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
-    score == 4 ~ "3_High"))
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
 
 
 #####################################################################################################################################
@@ -310,7 +314,8 @@ free_crab <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/12zMb5el0QA
     score == 1 ~ "1_Low",
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
-    score == 4 ~ "3_High"))
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
 
 
 #######################################################################################################################
@@ -366,7 +371,8 @@ free_crab <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/12zMb5el0QA
 #    score == 1 ~ "1_Low",
 #    score == 2 ~ "2_Medium",
 #    score == 3 ~ "2_Medium",
-#    score == 4 ~ "3_High"))
+#    score == 4 ~ "3_High",
+#    score == "NA" ~ "0_NA"))
 
 
 #######################################################################################################################
@@ -422,7 +428,8 @@ friedman_fiji <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/13fgkP1
     score == 1 ~ "1_Low",
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
-    score == 4 ~ "3_High"))
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
 
 
 #######################################################################################################################
@@ -478,7 +485,8 @@ hollowed_bering_sea <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1
     score == 1 ~ "1_Low",
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
-    score == 4 ~ "3_High"))
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
 
 
 
@@ -535,7 +543,8 @@ kisara_squid <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1RX1iUmE
     score == 1 ~ "1_Low",
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
-    score == 4 ~ "3_High"))
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
 
 
 ###########################################################################################################################
@@ -591,7 +600,8 @@ kleisner_jfi <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1YM1wc6F
     score == 1 ~ "1_Low",
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
-    score == 4 ~ "3_High"))
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
 
 
 ################################################################################################################################
@@ -647,7 +657,8 @@ lau_png <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/18po7Pgq5Od6Q
     score == 1 ~ "1_Low",
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
-    score == 4 ~ "3_High"))
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
 
 
 ###############################################################################################################################
@@ -703,7 +714,8 @@ mason_iceland <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1ZPs5ow
     score == 1 ~ "1_Low",
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
-    score == 4 ~ "3_High"))
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
 
 
 ##########################################################################################################################
@@ -759,7 +771,8 @@ mills_lobster <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1HEPT54
     score == 1 ~ "1_Low",
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
-    score == 4 ~ "3_High"))
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
 
 
 ########################################################################################################################
@@ -815,7 +828,8 @@ pecl_lobster <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/11Z-SLlA
     score == 1 ~ "1_Low",
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
-    score == 4 ~ "3_High"))
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
 
 
 ###########################################################################################################################
@@ -871,7 +885,8 @@ pecl_lobster <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/11Z-SLlA
 #    score == 1 ~ "1_Low",
 #    score == 2 ~ "2_Medium",
 #    score == 3 ~ "2_Medium",
-#    score == 4 ~ "3_High"))
+#    score == 4 ~ "3_High",
+#    score == "NA" ~ "0_NA"))
 
 
 
@@ -928,7 +943,8 @@ tokunaga_lobster <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1jgF
     score == 1 ~ "1_Low",
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
-    score == 4 ~ "3_High"))
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
 
 
 ############################################################################################################################
@@ -984,7 +1000,8 @@ westfall_hms <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1DMx0Ux9
     score == 1 ~ "1_Low",
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
-    score == 4 ~ "3_High"))
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
 
 
 ###################################################################################################################################
@@ -1040,7 +1057,8 @@ zhao_moorea <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1-Muz76--
     score == 1 ~ "1_Low",
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
-    score == 4 ~ "3_High"))
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
   
 ```
 
@@ -1058,8 +1076,8 @@ aguion_table <- aguion_barnacle %>%
   select("new_importance", "score_value", "attribute") %>% 
   group_by(score_value, new_importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(new_importance), values_from = attribute, values_fn = list) %>% 
-  rename(" " = score_value) 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance) 
   
 
 # Create table
@@ -1067,28 +1085,29 @@ aguion_table %>%
   kbl(caption = "Aguion Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3)) # %>% save_kable("aguion_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 3)) #%>% save_kable("aguion_attribute_table.png")
 ```
 
 
 ## Burden Attribute Table
 
 ```{r}
-### Go up to code above and ifx once columns have been completed
+### Go up to code above and fix once columns have been completed
 
 burden_table <- burden_sardine %>% 
-  select("importance", "score_value", "attribute") %>% 
-  group_by(score_value, importance) %>% 
+  select("new_importance", "score_value", "attribute") %>% 
+  group_by(score_value, new_importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(importance), values_from = attribute, values_fn = list) %>% 
-  rename(" " = score_value) 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance) 
   
 
 # Create table
 burden_table %>% 
   kbl(caption = "Burden Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
-  kable_styling(bootstrap_options = c("striped", "hover")) #%>% save_kable("burden_attribute_table.png")
+  kable_styling(bootstrap_options = c("striped", "hover")) %>% 
+  add_header_above(c(" ", "Attribute Scores" = 4)) #%>% save_kable("burden_attribute_table.png")
 ```
 
 
@@ -1099,8 +1118,8 @@ dickey_collas_table <- dickey_collas_eur %>%
   select("new_importance", "score_value", "attribute") %>% 
   group_by(score_value, new_importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(new_importance), values_from = attribute, values_fn = list) %>% 
-  rename(" " = score_value) 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance) 
   
 
 # Create table
@@ -1108,7 +1127,7 @@ dickey_collas_table %>%
   kbl(caption = "Dickey-Collas Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 4)) #%>% save_kable("dickey_collas_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 3)) #%>% save_kable("dickey_collas_attribute_table.png")
 ```
 
 
@@ -1119,8 +1138,8 @@ eurich_table <- eurich_clam %>%
   select("new_importance", "score_value", "attribute") %>% 
   group_by(score_value, new_importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(new_importance), values_from = attribute, values_fn = list) %>% 
-  rename(" " = score_value) 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance) 
   
 
 # Create table
@@ -1128,7 +1147,7 @@ eurich_table %>%
   kbl(caption = "Eurich Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3)) #%>% save_kable("eurich_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 3)) #%>% save_kable("eurich_attribute_table.png")
 ```
 
 
@@ -1139,8 +1158,8 @@ free_table <- free_crab %>%
   select("new_importance", "score_value", "attribute") %>% 
   group_by(score_value, new_importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(new_importance), values_from = attribute, values_fn = list) %>% 
-  rename(" " = score_value) 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance) 
   
 
 # Create table
@@ -1148,7 +1167,7 @@ free_table %>%
   kbl(caption = "Free Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3)) #%>% save_kable("free_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 3)) #%>% save_kable("free_attribute_table.png")
 ```
 
 
@@ -1159,8 +1178,8 @@ friedman_table <- friedman_fiji %>%
   select("new_importance", "score_value", "attribute") %>% 
   group_by(score_value, new_importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(new_importance), values_from = attribute, values_fn = list) %>% 
-  rename(" " = score_value) 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance) 
   
 
 # Create table
@@ -1168,7 +1187,7 @@ friedman_table %>%
   kbl(caption = "Friedman Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 4)) #%>% save_kable("friedman_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 3)) #%>% save_kable("friedman_attribute_table.png")
 ```
 
 
@@ -1179,8 +1198,8 @@ hollowed_table <- hollowed_bering_sea %>%
   select("new_importance", "score_value", "attribute") %>% 
   group_by(score_value, new_importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(new_importance), values_from = attribute, values_fn = list) %>% 
-  rename(" " = score_value) 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance)
   
 
 # Create table
@@ -1188,7 +1207,7 @@ hollowed_table %>%
   kbl(caption = "Hollowed Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3)) #%>% save_kable("hollowed_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 3)) #%>% save_kable("hollowed_attribute_table.png")
 ```
 
 
@@ -1199,8 +1218,8 @@ kisara_table <- kisara_squid %>%
   select("new_importance", "score_value", "attribute") %>% 
   group_by(score_value, new_importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(new_importance), values_from = attribute, values_fn = list) %>% 
-  rename(" " = score_value) 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance) 
   
 
 # Create table
@@ -1208,7 +1227,7 @@ kisara_table %>%
   kbl(caption = "Kisara Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 4)) #%>% save_kable("kisara_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 4)) #%>% save_kable("kisara_attribute_table.png")
 ```
 
 
@@ -1219,8 +1238,8 @@ kleisner_table <- kleisner_jfi %>%
   select("new_importance", "score_value", "attribute") %>% 
   group_by(score_value, new_importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(new_importance), values_from = attribute, values_fn = list) %>% 
-  rename(" " = score_value) 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance) 
   
 
 # Create table
@@ -1228,7 +1247,7 @@ kleisner_table %>%
   kbl(caption = "Kleisner Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3)) #%>% save_kable("kleisner_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 2)) #%>% save_kable("kleisner_attribute_table.png")
 ```
 
 
@@ -1239,8 +1258,8 @@ lau_table <- lau_png %>%
   select("new_importance", "score_value", "attribute") %>% 
   group_by(score_value, new_importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(new_importance), values_from = attribute, values_fn = list) %>% 
-  rename(" " = score_value) 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance) 
   
 
 # Create table
@@ -1248,7 +1267,7 @@ lau_table %>%
   kbl(caption = "Lau Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 4)) #%>% save_kable("lau_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 4)) #%>% save_kable("lau_attribute_table.png")
 ```
 
 
@@ -1259,8 +1278,8 @@ mason_table <- mason_iceland %>%
   select("new_importance", "score_value", "attribute") %>% 
   group_by(score_value, new_importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(new_importance), values_from = attribute, values_fn = list) %>% 
-  rename(" " = score_value) 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance) 
   
 
 # Create table
@@ -1268,7 +1287,7 @@ mason_table %>%
   kbl(caption = "Mason Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3)) #%>% save_kable("mason_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 2)) #%>% save_kable("mason_attribute_table.png")
 ```
 
 
@@ -1279,15 +1298,15 @@ mills_table <- mills_lobster %>%
   select("new_importance", "score_value", "attribute") %>% 
   group_by(score_value, new_importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(new_importance), values_from = attribute, values_fn = list) %>% 
-  rename(" " = score_value) 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance) 
   
 
 mills_table %>% 
   kbl(caption = "Mills Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 4)) #%>% save_kable("mills_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 2)) #%>% save_kable("mills_attribute_table.png")
 ```
 
 
@@ -1298,8 +1317,8 @@ pecl_table <- pecl_lobster %>%
   select("new_importance", "score_value", "attribute") %>% 
   group_by(score_value, new_importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(new_importance), values_from = attribute, values_fn = list) %>% 
-  rename(" " = score_value) 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance) 
   
 
 # Create table
@@ -1307,7 +1326,7 @@ pecl_table %>%
   kbl(caption = "Pecl Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3)) #%>% save_kable("pecl_attribute_table.png")
+  add_header_above(c(" ", "Attribute Score" = 2)) #%>% save_kable("pecl_attribute_table.png")
 ```
 
 
@@ -1318,8 +1337,8 @@ tokunaga_table <- tokunaga_lobster %>%
   select("new_importance", "score_value", "attribute") %>% 
   group_by(score_value, new_importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(new_importance), values_from = attribute, values_fn = list) %>% 
-  rename(" " = score_value) 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance) 
   
 
 # Create table
@@ -1327,7 +1346,7 @@ tokunaga_table %>%
   kbl(caption = "Tokunaga Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3)) #%>% save_kable("tokunaga_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 4)) #%>% save_kable("tokunaga_attribute_table.png")
 ```
 
 
@@ -1338,8 +1357,8 @@ westfall_table <- westfall_hms %>%
   select("new_importance", "score_value", "attribute") %>% 
   group_by(score_value, new_importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(new_importance), values_from = attribute, values_fn = list) %>% 
-  rename(" " = score_value) 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance) 
   
 
 # Create table
@@ -1347,7 +1366,7 @@ westfall_table %>%
   kbl(caption = "Westfall Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 4)) #%>% save_kable("westfall_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 2)) #%>% save_kable("westfall_attribute_table.png")
 ```
 
 
@@ -1358,8 +1377,8 @@ zhao_table <- zhao_moorea %>%
   select("new_importance", "score_value", "attribute") %>% 
   group_by(score_value, new_importance) %>% 
   summarize(attribute = str_c(attribute)) %>% 
-  pivot_wider(names_from = c(new_importance), values_from = attribute, values_fn = list) %>% 
-  rename(" " = score_value) 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance) 
   
 
 # Create table
@@ -1367,7 +1386,7 @@ zhao_table %>%
   kbl(caption = "Zhao Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Score Levels" = 3)) #%>% save_kable("zhao_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 3)) #%>% save_kable("zhao_attribute_table.png")
 ```
 
 
