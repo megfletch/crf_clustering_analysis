@@ -318,62 +318,6 @@ free_crab <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/12zMb5el0QA
     score == "NA" ~ "0_NA"))
 
 
-#######################################################################################################################
-#golden_madagascar <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1w99nN8C_Vd82j4Y23g2ZG_kuEh_Jc2HkW6lnLkhzeCU/edit#gid=1980661832", 
-#                           sheet = "UPDATED_S4_ResilienceAttributes",
-#                           range = "A6:P61",
-#                           col_names = TRUE,
-#                           na = "",
-#                           guess_max = 10000,
-#                           trim_ws = TRUE,
-#                           col_types = "c"
-#                           ) %>%
-#  as_tibble() %>%
-#  clean_names() %>% 
-#  rename(dimension=dimensions, 
-#         domain=new_domain, 
-#         attribute=resilience_attribute, 
-#         score=score_1_4,
-#         quality=information_quality, 
-#         importance=importance_of_attribute_in_study_system_high_medium_low, 
-#         work_as_described=does_the_mechanism_work_as_described_in_this_fishery_system) %>% 
-#  select(dimension, domain, attribute, score, quality, importance, work_as_described) %>% 
-#  filter(!is.na(attribute)) %>% 
-#  mutate(score=as.numeric(score)) %>% 
-#  mutate(dimension=recode_factor(dimension, 
-#                                 "Ecological"="Ecological",
-#                                 "Socio-economic"="Social-economic",
-#                                 "Governance-management"="Goverance")) %>% 
-#  mutate(quality=ifelse(quality=="NA - Not relevant in this system", NA, quality),
-#         quality=recode_factor(quality,
-#                               "E - No data"="No data",
-#                               "D - not confident that the answer provided reflects the true state of the system"="Low",
-#                               "C - fairly confident that the answer provided reflects the true state of the system"="Fair",
-#                               "B - limited data/information and expert judgement"="Good",
-#                               "A - adequate and reliable data/information"="Excellent")) %>% 
-#  mutate(importance=stringr::str_to_sentence(importance),
-#         importance=factor(importance, levels=c("Low", "Medium", "High"))) %>% 
-#  mutate(attribute=ifelse(work_as_described=="no", paste0(attribute, "*"), attribute)) %>% 
-#  arrange(dimension, domain, score) %>% 
-#  mutate(attribute=factor(attribute, levels=attribute)) %>% 
-# Create a new column to house numeric values for importance
-#  mutate(numeric_importance = case_when(
-#    importance == "Low" ~ 1,
-#    importance == "Medium" ~ 2,
-#    importance == "High" ~ 3)) %>% 
-#  mutate(new_importance = case_when(
-#    numeric_importance == 1 ~ "1_Low",
-#    numeric_importance == 2 ~ "2_Medium",
-#    numeric_importance == 3 ~ "3_High"
-#  )) %>% 
-  # Create a new column to convert numeric scores into values
-#  mutate(score_value = case_when(
-#    score == 1 ~ "1_Low",
-#    score == 2 ~ "2_Medium",
-#    score == 3 ~ "2_Medium",
-#    score == 4 ~ "3_High",
-#    score == "NA" ~ "0_NA"))
-
 
 #######################################################################################################################
 friedman_fiji <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/13fgkP1xHZB6gZqXUBHuylaC3ImCDIDTFFjqQ8RAoV-s/edit#gid=476628697", 
@@ -430,6 +374,65 @@ friedman_fiji <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/13fgkP1
     score == 3 ~ "2_Medium",
     score == 4 ~ "3_High",
     score == "NA" ~ "0_NA"))
+
+
+
+#######################################################################################################################
+golden_madagascar <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1w99nN8C_Vd82j4Y23g2ZG_kuEh_Jc2HkW6lnLkhzeCU/edit#gid=1980661832", 
+                           sheet = "UPDATED_S4_ResilienceAttributes",
+                           range = "A6:P61",
+                           col_names = TRUE,
+                           na = "",
+                           guess_max = 10000,
+                           trim_ws = TRUE,
+                           col_types = "c"
+                           ) %>%
+  as_tibble() %>%
+  clean_names() %>% 
+  rename(dimension=dimensions, 
+         domain=new_domain, 
+         attribute=resilience_attribute, 
+         score=score_1_4,
+         quality=information_quality, 
+         importance=importance_of_attribute_in_study_system_high_medium_low, 
+         work_as_described=does_the_mechanism_work_as_described_in_this_fishery_system) %>% 
+  select(dimension, domain, attribute, score, quality, importance, work_as_described) %>% 
+  filter(!is.na(attribute)) %>% 
+  mutate(score=as.numeric(score)) %>% 
+  mutate(dimension=recode_factor(dimension, 
+                                 "Ecological"="Ecological",
+                                 "Socio-economic"="Social-economic",
+                                 "Governance-management"="Goverance")) %>% 
+  mutate(quality=ifelse(quality=="NA - Not relevant in this system", NA, quality),
+         quality=recode_factor(quality,
+                               "E - No data"="No data",
+                               "D - not confident that the answer provided reflects the true state of the system"="Low",
+                               "C - fairly confident that the answer provided reflects the true state of the system"="Fair",
+                               "B - limited data/information and expert judgement"="Good",
+                               "A - adequate and reliable data/information"="Excellent")) %>% 
+  mutate(importance=stringr::str_to_sentence(importance),
+         importance=factor(importance, levels=c("Low", "Medium", "High"))) %>% 
+#  mutate(attribute=ifelse(work_as_described=="no", paste0(attribute, "*"), attribute)) %>% 
+  arrange(dimension, domain, score) %>% 
+  mutate(attribute=factor(attribute, levels=attribute)) %>% 
+ # Create a new column to house numeric values for importance
+  mutate(numeric_importance = case_when(
+    importance == "Low" ~ 1,
+    importance == "Medium" ~ 2,
+    importance == "High" ~ 3)) %>% 
+  mutate(new_importance = case_when(
+    numeric_importance == 1 ~ "1_Low",
+    numeric_importance == 2 ~ "2_Medium",
+    numeric_importance == 3 ~ "3_High"
+  )) %>% 
+  # Create a new column to convert numeric scores into values
+  mutate(score_value = case_when(
+    score == 1 ~ "1_Low",
+    score == 2 ~ "2_Medium",
+    score == 3 ~ "2_Medium",
+    score == 4 ~ "3_High",
+    score == "NA" ~ "0_NA"))
+
 
 
 #######################################################################################################################
@@ -772,7 +775,7 @@ mills_lobster <- read_sheet(ss = "https://docs.google.com/spreadsheets/d/1HEPT54
     score == 2 ~ "2_Medium",
     score == 3 ~ "2_Medium",
     score == 4 ~ "3_High",
-    score == "NA" ~ "0_NA"))
+    score == "NA" ~ "0_NA")) 
 
 
 ########################################################################################################################
@@ -1085,7 +1088,7 @@ aguion_table %>%
   kbl(caption = "Aguion Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Attribute Scores" = 3)) #%>% save_kable("aguion_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 3)) %>% save_kable("aguion_attribute_table.png")
 ```
 
 
@@ -1107,7 +1110,7 @@ burden_table %>%
   kbl(caption = "Burden Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Attribute Scores" = 4)) #%>% save_kable("burden_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 4)) %>% save_kable("burden_attribute_table.png")
 ```
 
 
@@ -1127,7 +1130,7 @@ dickey_collas_table %>%
   kbl(caption = "Dickey-Collas Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Attribute Scores" = 3)) #%>% save_kable("dickey_collas_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 3)) %>% save_kable("dickey_collas_attribute_table.png")
 ```
 
 
@@ -1147,7 +1150,7 @@ eurich_table %>%
   kbl(caption = "Eurich Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Attribute Scores" = 3)) #%>% save_kable("eurich_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 3)) %>% save_kable("eurich_attribute_table.png")
 ```
 
 
@@ -1167,7 +1170,7 @@ free_table %>%
   kbl(caption = "Free Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Attribute Scores" = 3)) #%>% save_kable("free_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 3)) %>% save_kable("free_attribute_table.png")
 ```
 
 
@@ -1187,7 +1190,27 @@ friedman_table %>%
   kbl(caption = "Friedman Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Attribute Scores" = 3)) #%>% save_kable("friedman_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 3)) %>% save_kable("friedman_attribute_table.png")
+```
+
+
+## Golden Attribute Table
+
+```{r}
+golden_table <- golden_madagascar %>% 
+  select("new_importance", "score_value", "attribute") %>% 
+  group_by(score_value, new_importance) %>% 
+  summarize(attribute = str_c(attribute)) %>% 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %>% 
+  rename(" " = new_importance) 
+  
+
+# Create table
+golden_table %>% 
+  kbl(caption = "Golden Attribtue Table") %>% 
+   kable_classic_2(full_width = F, html_font = "Cambria") %>% 
+  kable_styling(bootstrap_options = c("striped", "hover")) %>% 
+  add_header_above(c(" ", "Attribute Scores" = 4)) %>% save_kable("golden_attribute_table.png")
 ```
 
 
@@ -1207,7 +1230,7 @@ hollowed_table %>%
   kbl(caption = "Hollowed Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Attribute Scores" = 3)) #%>% save_kable("hollowed_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 3)) %>% save_kable("hollowed_attribute_table.png")
 ```
 
 
@@ -1227,7 +1250,7 @@ kisara_table %>%
   kbl(caption = "Kisara Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Attribute Scores" = 4)) #%>% save_kable("kisara_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 4)) %>% save_kable("kisara_attribute_table.png")
 ```
 
 
@@ -1247,7 +1270,7 @@ kleisner_table %>%
   kbl(caption = "Kleisner Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Attribute Scores" = 2)) #%>% save_kable("kleisner_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 2)) %>% save_kable("kleisner_attribute_table.png")
 ```
 
 
@@ -1267,7 +1290,7 @@ lau_table %>%
   kbl(caption = "Lau Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Attribute Scores" = 4)) #%>% save_kable("lau_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 4)) %>% save_kable("lau_attribute_table.png")
 ```
 
 
@@ -1287,7 +1310,7 @@ mason_table %>%
   kbl(caption = "Mason Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Attribute Scores" = 2)) #%>% save_kable("mason_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 2)) %>% save_kable("mason_attribute_table.png")
 ```
 
 
@@ -1306,7 +1329,7 @@ mills_table %>%
   kbl(caption = "Mills Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Attribute Scores" = 2)) #%>% save_kable("mills_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 2)) %>% save_kable("mills_attribute_table.png")
 ```
 
 
@@ -1326,7 +1349,7 @@ pecl_table %>%
   kbl(caption = "Pecl Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Attribute Score" = 2)) #%>% save_kable("pecl_attribute_table.png")
+  add_header_above(c(" ", "Attribute Score" = 2)) %>% save_kable("pecl_attribute_table.png")
 ```
 
 
@@ -1346,7 +1369,7 @@ tokunaga_table %>%
   kbl(caption = "Tokunaga Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Attribute Scores" = 4)) #%>% save_kable("tokunaga_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 4)) %>% save_kable("tokunaga_attribute_table.png")
 ```
 
 
@@ -1366,7 +1389,7 @@ westfall_table %>%
   kbl(caption = "Westfall Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Attribute Scores" = 2)) #%>% save_kable("westfall_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 2)) %>% save_kable("westfall_attribute_table.png")
 ```
 
 
@@ -1386,7 +1409,7 @@ zhao_table %>%
   kbl(caption = "Zhao Attribtue Table") %>% 
    kable_classic_2(full_width = F, html_font = "Cambria") %>% 
   kable_styling(bootstrap_options = c("striped", "hover")) %>% 
-  add_header_above(c(" ", "Attribute Scores" = 3)) #%>% save_kable("zhao_attribute_table.png")
+  add_header_above(c(" ", "Attribute Scores" = 3)) %>% save_kable("zhao_attribute_table.png")
 ```
 
 

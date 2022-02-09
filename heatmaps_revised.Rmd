@@ -440,7 +440,7 @@ attributes_merged_clean <- attributes_merged %>%
 
 # Prepare data for performing clustering analysis
 case_clustering <- attributes_merged_clean %>% 
-  select(case_study, dimension, attribute, official_score) %>% 
+  select(case_study, attribute, official_score) %>% 
   # Use `pivot_wider` function to decrease the number of rows and increase the number of columns
   # Also do values_fill = 0 to convert NA values to 0
   pivot_wider(names_from = attribute, values_from = official_score, values_fill = 0)
@@ -448,7 +448,7 @@ case_clustering <- attributes_merged_clean %>%
 # Prepare data for dendrogram
 # Scale the data
 case_scaled <- case_clustering
-case_scaled[, c(3:40)] <- scale(case_scaled[, 3:40])
+case_scaled[, c(2:39)] <- scale(case_scaled[, 2:39])
 
 # Run clustering
 case_matrix <- as.matrix(case_scaled[, -c(1)])

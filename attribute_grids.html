@@ -555,62 +555,6 @@ free_crab &lt;- read_sheet(ss = &quot;https://docs.google.com/spreadsheets/d/12z
     score == &quot;NA&quot; ~ &quot;0_NA&quot;))
 
 
-#######################################################################################################################
-#golden_madagascar &lt;- read_sheet(ss = &quot;https://docs.google.com/spreadsheets/d/1w99nN8C_Vd82j4Y23g2ZG_kuEh_Jc2HkW6lnLkhzeCU/edit#gid=1980661832&quot;, 
-#                           sheet = &quot;UPDATED_S4_ResilienceAttributes&quot;,
-#                           range = &quot;A6:P61&quot;,
-#                           col_names = TRUE,
-#                           na = &quot;&quot;,
-#                           guess_max = 10000,
-#                           trim_ws = TRUE,
-#                           col_types = &quot;c&quot;
-#                           ) %&gt;%
-#  as_tibble() %&gt;%
-#  clean_names() %&gt;% 
-#  rename(dimension=dimensions, 
-#         domain=new_domain, 
-#         attribute=resilience_attribute, 
-#         score=score_1_4,
-#         quality=information_quality, 
-#         importance=importance_of_attribute_in_study_system_high_medium_low, 
-#         work_as_described=does_the_mechanism_work_as_described_in_this_fishery_system) %&gt;% 
-#  select(dimension, domain, attribute, score, quality, importance, work_as_described) %&gt;% 
-#  filter(!is.na(attribute)) %&gt;% 
-#  mutate(score=as.numeric(score)) %&gt;% 
-#  mutate(dimension=recode_factor(dimension, 
-#                                 &quot;Ecological&quot;=&quot;Ecological&quot;,
-#                                 &quot;Socio-economic&quot;=&quot;Social-economic&quot;,
-#                                 &quot;Governance-management&quot;=&quot;Goverance&quot;)) %&gt;% 
-#  mutate(quality=ifelse(quality==&quot;NA - Not relevant in this system&quot;, NA, quality),
-#         quality=recode_factor(quality,
-#                               &quot;E - No data&quot;=&quot;No data&quot;,
-#                               &quot;D - not confident that the answer provided reflects the true state of the system&quot;=&quot;Low&quot;,
-#                               &quot;C - fairly confident that the answer provided reflects the true state of the system&quot;=&quot;Fair&quot;,
-#                               &quot;B - limited data/information and expert judgement&quot;=&quot;Good&quot;,
-#                               &quot;A - adequate and reliable data/information&quot;=&quot;Excellent&quot;)) %&gt;% 
-#  mutate(importance=stringr::str_to_sentence(importance),
-#         importance=factor(importance, levels=c(&quot;Low&quot;, &quot;Medium&quot;, &quot;High&quot;))) %&gt;% 
-#  mutate(attribute=ifelse(work_as_described==&quot;no&quot;, paste0(attribute, &quot;*&quot;), attribute)) %&gt;% 
-#  arrange(dimension, domain, score) %&gt;% 
-#  mutate(attribute=factor(attribute, levels=attribute)) %&gt;% 
-# Create a new column to house numeric values for importance
-#  mutate(numeric_importance = case_when(
-#    importance == &quot;Low&quot; ~ 1,
-#    importance == &quot;Medium&quot; ~ 2,
-#    importance == &quot;High&quot; ~ 3)) %&gt;% 
-#  mutate(new_importance = case_when(
-#    numeric_importance == 1 ~ &quot;1_Low&quot;,
-#    numeric_importance == 2 ~ &quot;2_Medium&quot;,
-#    numeric_importance == 3 ~ &quot;3_High&quot;
-#  )) %&gt;% 
-  # Create a new column to convert numeric scores into values
-#  mutate(score_value = case_when(
-#    score == 1 ~ &quot;1_Low&quot;,
-#    score == 2 ~ &quot;2_Medium&quot;,
-#    score == 3 ~ &quot;2_Medium&quot;,
-#    score == 4 ~ &quot;3_High&quot;,
-#    score == &quot;NA&quot; ~ &quot;0_NA&quot;))
-
 
 #######################################################################################################################
 friedman_fiji &lt;- read_sheet(ss = &quot;https://docs.google.com/spreadsheets/d/13fgkP1xHZB6gZqXUBHuylaC3ImCDIDTFFjqQ8RAoV-s/edit#gid=476628697&quot;, 
@@ -667,6 +611,65 @@ friedman_fiji &lt;- read_sheet(ss = &quot;https://docs.google.com/spreadsheets/d
     score == 3 ~ &quot;2_Medium&quot;,
     score == 4 ~ &quot;3_High&quot;,
     score == &quot;NA&quot; ~ &quot;0_NA&quot;))
+
+
+
+#######################################################################################################################
+golden_madagascar &lt;- read_sheet(ss = &quot;https://docs.google.com/spreadsheets/d/1w99nN8C_Vd82j4Y23g2ZG_kuEh_Jc2HkW6lnLkhzeCU/edit#gid=1980661832&quot;, 
+                           sheet = &quot;UPDATED_S4_ResilienceAttributes&quot;,
+                           range = &quot;A6:P61&quot;,
+                           col_names = TRUE,
+                           na = &quot;&quot;,
+                           guess_max = 10000,
+                           trim_ws = TRUE,
+                           col_types = &quot;c&quot;
+                           ) %&gt;%
+  as_tibble() %&gt;%
+  clean_names() %&gt;% 
+  rename(dimension=dimensions, 
+         domain=new_domain, 
+         attribute=resilience_attribute, 
+         score=score_1_4,
+         quality=information_quality, 
+         importance=importance_of_attribute_in_study_system_high_medium_low, 
+         work_as_described=does_the_mechanism_work_as_described_in_this_fishery_system) %&gt;% 
+  select(dimension, domain, attribute, score, quality, importance, work_as_described) %&gt;% 
+  filter(!is.na(attribute)) %&gt;% 
+  mutate(score=as.numeric(score)) %&gt;% 
+  mutate(dimension=recode_factor(dimension, 
+                                 &quot;Ecological&quot;=&quot;Ecological&quot;,
+                                 &quot;Socio-economic&quot;=&quot;Social-economic&quot;,
+                                 &quot;Governance-management&quot;=&quot;Goverance&quot;)) %&gt;% 
+  mutate(quality=ifelse(quality==&quot;NA - Not relevant in this system&quot;, NA, quality),
+         quality=recode_factor(quality,
+                               &quot;E - No data&quot;=&quot;No data&quot;,
+                               &quot;D - not confident that the answer provided reflects the true state of the system&quot;=&quot;Low&quot;,
+                               &quot;C - fairly confident that the answer provided reflects the true state of the system&quot;=&quot;Fair&quot;,
+                               &quot;B - limited data/information and expert judgement&quot;=&quot;Good&quot;,
+                               &quot;A - adequate and reliable data/information&quot;=&quot;Excellent&quot;)) %&gt;% 
+  mutate(importance=stringr::str_to_sentence(importance),
+         importance=factor(importance, levels=c(&quot;Low&quot;, &quot;Medium&quot;, &quot;High&quot;))) %&gt;% 
+#  mutate(attribute=ifelse(work_as_described==&quot;no&quot;, paste0(attribute, &quot;*&quot;), attribute)) %&gt;% 
+  arrange(dimension, domain, score) %&gt;% 
+  mutate(attribute=factor(attribute, levels=attribute)) %&gt;% 
+ # Create a new column to house numeric values for importance
+  mutate(numeric_importance = case_when(
+    importance == &quot;Low&quot; ~ 1,
+    importance == &quot;Medium&quot; ~ 2,
+    importance == &quot;High&quot; ~ 3)) %&gt;% 
+  mutate(new_importance = case_when(
+    numeric_importance == 1 ~ &quot;1_Low&quot;,
+    numeric_importance == 2 ~ &quot;2_Medium&quot;,
+    numeric_importance == 3 ~ &quot;3_High&quot;
+  )) %&gt;% 
+  # Create a new column to convert numeric scores into values
+  mutate(score_value = case_when(
+    score == 1 ~ &quot;1_Low&quot;,
+    score == 2 ~ &quot;2_Medium&quot;,
+    score == 3 ~ &quot;2_Medium&quot;,
+    score == 4 ~ &quot;3_High&quot;,
+    score == &quot;NA&quot; ~ &quot;0_NA&quot;))
+
 
 
 #######################################################################################################################
@@ -1009,7 +1012,7 @@ mills_lobster &lt;- read_sheet(ss = &quot;https://docs.google.com/spreadsheets/d
     score == 2 ~ &quot;2_Medium&quot;,
     score == 3 ~ &quot;2_Medium&quot;,
     score == 4 ~ &quot;3_High&quot;,
-    score == &quot;NA&quot; ~ &quot;0_NA&quot;))
+    score == &quot;NA&quot; ~ &quot;0_NA&quot;)) 
 
 
 ########################################################################################################################
@@ -1404,6 +1407,23 @@ friedman_table %&gt;%
    kable_classic_2(full_width = F, html_font = &quot;Cambria&quot;) %&gt;% 
   kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;)) %&gt;% 
   add_header_above(c(&quot; &quot;, &quot;Attribute Scores&quot; = 3)) %&gt;% save_kable(&quot;friedman_attribute_table.png&quot;)</code></pre>
+</div>
+<div id="golden-attribute-table" class="section level2">
+<h2>Golden Attribute Table</h2>
+<pre class="r"><code>golden_table &lt;- golden_madagascar %&gt;% 
+  select(&quot;new_importance&quot;, &quot;score_value&quot;, &quot;attribute&quot;) %&gt;% 
+  group_by(score_value, new_importance) %&gt;% 
+  summarize(attribute = str_c(attribute)) %&gt;% 
+  pivot_wider(names_from = c(score_value), values_from = attribute, values_fn = list) %&gt;% 
+  rename(&quot; &quot; = new_importance) 
+  
+
+# Create table
+golden_table %&gt;% 
+  kbl(caption = &quot;Golden Attribtue Table&quot;) %&gt;% 
+   kable_classic_2(full_width = F, html_font = &quot;Cambria&quot;) %&gt;% 
+  kable_styling(bootstrap_options = c(&quot;striped&quot;, &quot;hover&quot;)) %&gt;% 
+  add_header_above(c(&quot; &quot;, &quot;Attribute Scores&quot; = 4)) %&gt;% save_kable(&quot;golden_attribute_table.png&quot;)</code></pre>
 </div>
 <div id="hollowed-attribute-table" class="section level2">
 <h2>Hollowed Attribute Table</h2>
